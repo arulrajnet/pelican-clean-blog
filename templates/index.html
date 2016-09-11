@@ -47,6 +47,12 @@
                     {{ article.title }}
                 </h2>
             </a>
+            <p class="post-meta">
+                {% for author in article.authors %}
+                    <a href="{{ SITEURL }}/{{ author.url }}">{{ author|capitalize }}</a>
+                {% endfor %}
+                 | {{ article.locale_date }}
+            </p>
             {% if SHOW_FULL_ARTICLE %}
                 {{ article.content }}
             {% else %}
@@ -54,16 +60,10 @@
                 {% if article.has_summary %}
                     {{ article.summary }}
                 {% elif article.summary %}
-                    {{ article.summary|striptags|truncate(140) }}
+                    {{ article.summary|striptags|truncate(250) }}
                 {% endif %}
                 </p>
             {% endif %}
-            <p class="post-meta">Posted by
-                {% for author in article.authors %}
-                    <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-                {% endfor %}
-                 on {{ article.locale_date }}
-            </p>
             {% include 'comments.html' %}
         </div>
     {% endfor %}
