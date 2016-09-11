@@ -129,13 +129,15 @@
         {{ article.content }}
     </article>
 
+    <div class="post-info">
     {% if article.tags %}
-        <div class="tags">
-            <p>tags: {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+        <div class="post-tags">
+            {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>{% if not loop.last %}{% endif %}{% endfor %}
         </div>
     {% endif %}
 
     {% include 'sharing.html' %}
+    </div>
     <hr>
 
     {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}

@@ -46,6 +46,7 @@
 
         <!-- Custom CSS -->
         <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/clean-blog.min.css" rel="stylesheet">
+        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/post-info.css" rel="stylesheet">
 
         <!-- Code highlight color scheme -->
         {% if COLOR_SCHEME_CSS %}
@@ -56,7 +57,9 @@
 
         {% if CSS_OVERRIDE %}
             <!-- CSS specified by the user -->
-            <link href="{{ SITEURL }}/{{ CSS_OVERRIDE }}" rel="stylesheet">
+            {% for css in CSS_OVERRIDE %}
+            <link href="{{ SITEURL }}/{{ css }}" rel="stylesheet">
+            {% endfor %}
         {% endif %}
 
         <!-- Custom Fonts -->
